@@ -18,6 +18,10 @@ public class Show {
     private int time;
     private int seatLeft;
     private ArrayList<customerData> customers;
+    public Show(int d,int t){
+        day=d;
+        time=t;
+    }
     public boolean bookSeats(String name,int seats){
         if(seatLeft>=seats){
             customers.add(new customerData(name,seats));
