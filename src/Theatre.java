@@ -10,7 +10,19 @@ public class Theatre {
         TicketCounter c1 = new TicketCounter(SHOW,"C1.txt");
         TicketCounter c2 = new TicketCounter(SHOW,"C2.txt");
         TicketCounter c3 = new TicketCounter(SHOW,"C3.txt");
-        
+        c1.start();
+        c2.start();
+        c3.start();
+        try{
+            c1.join();
+            c2.join();
+            c3.join();
+        }catch (InterruptedException e) { }
+
+        System.out.println("Summary");
+        for(int i=0;i<6;i++){
+            SHOW.get(i).printlist();
+        }
     }
 
 }

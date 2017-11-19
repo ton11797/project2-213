@@ -1,0 +1,6 @@
+1 Annie 1 afternoon 65
+2 Betty 3 evening 40
+3 Carol 1 afternoon 15
+4 David 2 afternoon 25
+5 Ellen 2 afternoon 50
+6 Fiona 3 afternoon 30

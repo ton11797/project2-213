@@ -22,7 +22,7 @@ public class Show {
         day=d;
         time=t;
     }
-    public boolean bookSeats(String name,int seats){
+    public synchronized boolean bookSeats(String name,int seats){
         if(seatLeft>=seats){
             customers.add(new customerData(name,seats));
             return true;

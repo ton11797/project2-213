@@ -14,4 +14,7 @@ public class TicketCounter extends Thread {
     public int index(int d,int t){
         return d*2 -(2-t) -1;
     }
+    public void run(){
+
+    }
 }
