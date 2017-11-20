@@ -23,6 +23,12 @@ public class Theatre {
         for(int i=0;i<6;i++){
             SHOW.get(i).printlist();
         }
+        
+                MyBarrier finish = new MyBarrier();
+		c1.setMyBarrier( finish );
+		c2.setMyBarrier( finish );
+		c3.setMyBarrier( finish );
+                ///sd
     }
 
 }
