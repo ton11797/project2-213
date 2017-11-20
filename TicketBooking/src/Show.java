@@ -1,40 +1,56 @@
-import java.util.ArrayList;
-
+import java.util.*;
 /**
  * Created by Denice on 19/11/2560.
  */
 class customerData{
+
     private String name;
     private int seats;
+
     public customerData(String n,int s){
         name=n;
         seats=s;
     }
+
     public String getName(){return name;}
     public int getSeats(){return seats;}
 }
-public class Show {
+
+public class Show implements Comparable<Show>{
+
     private int day;
     private int time;
     private int seatLeft;
     private ArrayList<customerData> customers;
+
     public Show(int d, int t, int seats){
         customers = new ArrayList<>();
         day=d;
         time=t;
         seatLeft=seats;
     }
+
     public synchronized boolean bookSeats(String name,int seats){
         if(seatLeft>=seats){
             seatLeft-=seats;
             customers.add(new customerData(name,seats));
             return true;
-        }else{
-            return false;
         }
+            return false;
+    }
+
+    public int compareTo(Show other){
+        return seatLeft - other.seatLeft;
+    }
+
+    public void left(){
+        String tmp;
+        if(time==1)tmp="afternoon";else tmp="evening";
+        System.out.printf("Day %d (%s) : available seats = %d\r\n",day,tmp,seatLeft);
     }
 
     public void printlist(){
+
         System.out.printf("Day %d",day);
         if (time==1){
             System.out.printf(" (afternoon) : ",day);
