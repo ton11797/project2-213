@@ -18,12 +18,15 @@ public class Show {
     private int time;
     private int seatLeft;
     private ArrayList<customerData> customers;
-    public Show(int d,int t){
+    public Show(int d, int t, int seats){
+        customers = new ArrayList<>();
         day=d;
         time=t;
+        seatLeft=seats;
     }
     public synchronized boolean bookSeats(String name,int seats){
         if(seatLeft>=seats){
+            seatLeft-=seats;
             customers.add(new customerData(name,seats));
             return true;
         }else{
@@ -41,5 +44,6 @@ public class Show {
         for(int i =0;i<customers.size();i++){
             System.out.printf("%s (%d seats) ",customers.get(i).getName(),customers.get(i).getSeats());
         }
+        System.out.println("");
     }
 }

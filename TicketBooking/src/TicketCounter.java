@@ -1,4 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Created by Denice on 19/11/2560.
@@ -17,10 +20,38 @@ public class TicketCounter extends Thread {
         return d*2 -(2-t) -1;
     }
     public void run(){
-        
-        
-        
-        
+        try {
+            Scanner scanner = new Scanner(new File(filename));
+            while (scanner.hasNext()){
+                int n=scanner.nextInt();
+                String customerName=scanner.next();
+                int day=scanner.nextInt();
+                String time=scanner.next();
+                int tmp;
+                if(time.equalsIgnoreCase("evening"))tmp=2;else tmp=1;
+                int seats=scanner.nextInt();
+
+                if(shows.get(index(day,tmp)).bookSeats(customerName,seats)){
+                    System.out.printf("%s > #%d %s books %d seats for day %d (%s) -- succeed\r\n",
+                            this.currentThread().getName(),n,customerName,seats,day,time);
+                }else if(tmp==1){
+                    if(shows.get(index(day,2)).bookSeats(customerName,seats)){
+                        System.out.printf("%s > #%d %s books %d seats for day %d (%s) -- succeed\r\n",
+                                this.currentThread().getName(),n,customerName,seats,day,"evening");
+                    }else{
+                        System.out.printf("%s > #%d %s books %d seats for day %d (%s) -- fail\r\n",
+                                this.currentThread().getName(),n,customerName,seats,day,time);
+                    }
+                }else{
+                    System.out.printf("%s > #%d %s books %d seats for day %d (%s) -- fail\r\n",
+                            this.currentThread().getName(),n,customerName,seats,day,time);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
 
