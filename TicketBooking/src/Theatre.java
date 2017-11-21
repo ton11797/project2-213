@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by Denice on 19/11/2560.
@@ -37,17 +36,31 @@ public class Theatre {
 
 
         //Create Threads TicketCounter
-        TicketCounter c1 = null,c2 = null,c3 = null;
+        TicketCounter c1,c2,c3;
+        /*
+        for(int i = 0 ; i < 3 ; i++){
+            String[] filename = {"Cj1","Cb2","Cg3"};
         do {
+            
             try {
                 error = true;
-                c1 = new TicketCounter(SHOW, "C1", checkpoints);
-                c2 = new TicketCounter(SHOW, "C2", checkpoints);
-                c3 = new TicketCounter(SHOW, "C3", checkpoints);
+                
+                c[i] = new TicketCounter(SHOW, filename[i], checkpoints);
+
                 error = false;
             } catch (Exception e) {
+                System.err.println("Enter file "+ i + " again!! error : " + filename[i] );
+                Scanner scan_err = new Scanner(System.in);
+                filename[i] = scan_err.nextLine();
             }
         }while(error);
+        
+        }*/
+        
+         c1 = new TicketCounter(SHOW, "Cs1", checkpoints);
+         c2 = new TicketCounter(SHOW, "C52", checkpoints);
+         c3 = new TicketCounter(SHOW, "C3", checkpoints);
+         
 
         c1.start(); c2.start(); c3.start();
 
@@ -67,8 +80,8 @@ public class Theatre {
         }catch (InterruptedException e) { }
 
 
-        //report summary
-        System.out.println("Summary");
+        //print summary
+        System.out.println("\nSummary");
         for(int i=0;i<6;i++){
             SHOW.get(i).printlist();
         }
