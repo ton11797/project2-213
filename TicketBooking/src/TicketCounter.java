@@ -32,7 +32,6 @@ public class TicketCounter extends Thread {
             }
         }while(error);
         
-        
     }
 
     public int index(int d,int t){
@@ -51,28 +50,28 @@ public class TicketCounter extends Thread {
                 int seats=scanner.nextInt();
 
                 if(checkpoint==n)
-                finish.reach();
+                try{
+                    finish.reach();
+                }catch(Exception e){/*error case : max seats is minimal*/};
                 
                 // check time to print
                 if(shows.get(index(day,tmp)).bookSeats(customerName,seats)){
-                    System.out.printf("%s > #%d %s books %d seats for day %d (%s%-10s) -- succeed\r\n",
+                    System.out.printf("%s > #%2d %s books %d seats for day %d (%s%-10s) -- succeed\r\n",
                             filename,n,customerName,seats,day," ",time);
                 }else if(tmp==1){
                     if(shows.get(index(day,2)).bookSeats(customerName,seats)){
-                        System.out.printf("%s > #%d %s books %d seats for day %d (%s%-10s) -- succeed\r\n",
+                        System.out.printf("%s > #%2d %s books %d seats for day %d (%s%-10s) -- succeed\r\n",
                                 filename,n,customerName,seats,day," ","evening");
                     }else{
-                        System.out.printf("%s > #%d %s books %d seats for day %d (%s%-10s) -- fail\r\n",
+                        System.out.printf("%s > #%2d %s books %d seats for day %d (%s%-10s) -- fail\r\n",
                                 filename,n,customerName,seats,day," ",time);
                     }
                 }else{
-                    System.out.printf("%s > #%d %s books %d seats for day %d (%s%-10s) -- fail\r\n",
+                    System.out.printf("%s > #%2d %s books %d seats for day %d (%s%-10s) -- fail\r\n",
                             filename,n,customerName,seats,day," ",time);
                 }
 
             }
-
-
     }
 }
 
@@ -80,7 +79,7 @@ public class TicketCounter extends Thread {
 class MyBarrier
 {
 	private int numthreads = 0;
-    ArrayList<Show> shows;
+        ArrayList<Show> shows;
 	public MyBarrier(){}
 	public MyBarrier(ArrayList<Show> n){ shows=n; }
 
@@ -89,17 +88,17 @@ class MyBarrier
 
 	public synchronized void reach()
 	{
-		numthreads--;
-		if (numthreads > 0) {
-            try { wait(); } catch (InterruptedException e) {}
-        } else {
-            System.out.println("\nCheckpoint");
-            ArrayList<Show> forSort = new ArrayList<>(shows);
-            Collections.sort(forSort);
-            for (int i=0;i<forSort.size();i++)forSort.get(i).left();
-            System.out.println("");
-            notifyAll();
-        }
+           numthreads--;
+           if (numthreads > 0) {
+               try { wait(); } catch (InterruptedException e) {}
+           } else {
+               System.out.println("\nCheckpoint");
+               ArrayList<Show> forSort = new ArrayList<>(shows);
+               Collections.sort(forSort);
+               for (int i=0;i<forSort.size();i++)forSort.get(i).left();
+               System.out.println("");
+               notifyAll();
+           }
         
 	}
 };

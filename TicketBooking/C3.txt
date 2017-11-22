@@ -1,6 +1,10 @@
-1 Marla 1 afternoon 30
-2 Nelly 3 evening 15
-3 Olive 2 afternoon 25
-4 Penny 2 afternoon 50
-5 Quinn 3 afternoon 30
-6 Ralph 1 evening 30
+1  Marla 1 afternoon 30
+2  Nelly 3 evening   15
+3  Olive 2 afternoon 25
+4  Penny 2 afternoon 50
+5  Quinn 3 afternoon 30
+6  Ralph 1 evening   30
+7  Stven 3 afternoon 60
+8  Tommy 3 evening   20
+9  Umbel 2 evening   52
+10 Veevy 2 afternoon 40

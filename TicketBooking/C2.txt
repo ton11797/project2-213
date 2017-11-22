@@ -1,6 +1,10 @@
-1 Ginny 2 evening 60
-2 Helen 1 afternoon 35
-3 Isaac 2 evening 10
-4 Jacob 3 afternoon 40
-5 Kathy 2 afternoon 15
-6 Leona 1 evening 30
+1  Ginny 2 evening   60
+2  Helen 1 afternoon 35
+3  Isaac 2 evening   10
+4  Jacob 3 afternoon 40
+5  Kathy 2 afternoon 15
+6  Leona 1 evening   30
+7  Moony 1 evening   15
+8  Noper 2 afternoon 55
+9  Otios 3 afternoon 30
+10 Peter 2 evening   20

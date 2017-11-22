@@ -38,7 +38,8 @@ public class Show implements Comparable<Show>{
         }
             return false;
     }
-
+    
+    //compare for print
     public int compareTo(Show other){
         return day - other.day;
     }
@@ -47,20 +48,24 @@ public class Show implements Comparable<Show>{
     public void left(){
         String tmp;
         if(time==1)tmp="afternoon";else tmp="evening";
-        System.out.printf("Day %d (%s%-10s) : available seats = %d\r\n",day," ",tmp,seatLeft);
+        System.out.printf("Day %d (%s%-10s) : available seats = %3d\r\n",day," ",tmp,seatLeft);
     }
 
     //Method to print summary
     public void printlist(){
 
-        System.out.printf("Day %d",day);
-        if (time==1){
-            System.out.printf(" (%s%-10s) : "," ","afternoon");
-        }else{
-            System.out.printf(" (%s%-10s) : "," ","evening");
+        System.out.printf("Day %d", day);
+        if (time == 1) {
+            System.out.printf(" (%s%-10s) : ", " ", "afternoon");
+        } else {
+            System.out.printf(" (%s%-10s) : ", " ", "evening");
         }
-        for(int i =0;i<customers.size();i++){
-            System.out.printf("%s (%d seats) ",customers.get(i).getName(),customers.get(i).getSeats());
+        if (!customers.isEmpty()) {
+            for (int i = 0; i < customers.size(); i++) {
+                System.out.printf("%s (%d seats) ", customers.get(i).getName(), customers.get(i).getSeats());
+            }
+        } else {
+                System.out.printf(" No Customer ");
         }
         System.out.println("");
     }
