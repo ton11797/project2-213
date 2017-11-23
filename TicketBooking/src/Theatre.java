@@ -41,14 +41,18 @@ public class Theatre {
         TicketCounter c1 = new TicketCounter(SHOW, "C1", checkpoints);
         TicketCounter c2 = new TicketCounter(SHOW, "C2", checkpoints);
         TicketCounter c3 = new TicketCounter(SHOW, "C3", checkpoints); 
-        c1.start(); c2.start(); c3.start();
-
-
+        
         //Create Barrier
         MyBarrier finish = new MyBarrier(SHOW);
         c1.setMyBarrier( finish );
         c2.setMyBarrier( finish );
         c3.setMyBarrier( finish );
+        
+        //Starting Threads 
+        c1.start(); c2.start(); c3.start();
+
+
+
 
 
         //join threads
